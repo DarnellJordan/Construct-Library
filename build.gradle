@@ -159,11 +159,8 @@ dependencies {
 
 publishing {
     publications { 
-        myPublication(MavenPublication) { 
-            groupId 'dev.psygamer' 
-            artifactId 'construct' 
-            version '0.1' 
-            artifact 'build/libs/${project.name}-${project.version}.jar' 
+        construct(MavenPublication) { 
+            from components.java 
         } 
     } 
     
