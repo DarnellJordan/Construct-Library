@@ -8,7 +8,7 @@ buildscript {
     }
 }
 
-plugin {
+plugins {
     id 'maven-publish'
 }
 
