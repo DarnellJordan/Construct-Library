@@ -8,6 +8,10 @@ buildscript {
     }
 }
 
+plugin {
+    id 'maven-publish'
+}
+
 apply plugin: 'net.minecraftforge.gradle'
 
 group = 'dev.psygamer'
