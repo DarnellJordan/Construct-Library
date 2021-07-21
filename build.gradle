@@ -10,9 +10,15 @@ buildscript {
 
 apply plugin: 'net.minecraftforge.gradle'
 
+String buildNumber = System.getenv().BUILD_NUMBER
+
+if (buildNumber == null) {
+    buildNumber = '9999'
+}
+
 group = 'dev.psygamer'
 archivesBaseName = 'wireframe'
-version = '0.1'
+version = '0.1-${buildNumber}'
 
 java {
     withSourcesJar()
@@ -89,6 +95,13 @@ jar {
                 "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
         ])
     }
+
+    finalizedBy 'reobfjar'
 }
 
-jar.finalizedBy('reobfJar')
+task devJar(type: Jar) {
+    archiveClassifier = "dev"
+
+    from sourceSet.main.output
+    from sourceSet.main.allJava
+}
